@@ -21,7 +21,9 @@ class NetworkHelper : Fragment() {
 
         val connectionLiveData = ConnectionLiveData(context!!)
         connectionLiveData.observe(this, Observer { isConnected ->
-            Toast.makeText(context, if (isConnected) "NETWORK CONNECTED" else "NETWORK DISCONNECTED", Toast.LENGTH_LONG).show()
+            if (!isConnected) {
+                Toast.makeText(context, "NETWORK DISCONNECTED", Toast.LENGTH_LONG).show()
+            }
         })
     }
 }
